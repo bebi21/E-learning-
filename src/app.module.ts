@@ -3,15 +3,13 @@ import { SubscriptionController } from './subscription/subscription.controller';
 import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Module } from '@nestjs/common';
-
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { CourseModule } from './course/course.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { User } from './user/entity/user.entity';
 import { Course } from './course/entities/course.entity';
+import { Subscription } from './subscription/entity/subscription.entity';
 
 @Module({
   imports: [
+    SubscriptionModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
@@ -19,13 +17,12 @@ import { Course } from './course/entities/course.entity';
       username: 'root',
       password: '',
       database: 'e-learning',
-      entities: [Course],
+      entities: [Course, User, Subscription],
       synchronize: true,
     }),
-    CourseModule,
+    UserModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
-
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
