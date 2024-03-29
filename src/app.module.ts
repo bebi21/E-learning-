@@ -1,4 +1,9 @@
+import { SubscriptionModule } from './subscription/subscription.module';
+import { SubscriptionController } from './subscription/subscription.controller';
+import { UserModule } from './user/user.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { Module } from '@nestjs/common';
+
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CourseModule } from './course/course.module';
@@ -21,5 +26,6 @@ import { Course } from './course/entities/course.entity';
   ],
   controllers: [AppController],
   providers: [AppService],
+
 })
 export class AppModule {}
