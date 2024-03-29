@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+
 import { User } from './user/entity/user.entity';
 import { CourseModule } from './course/course.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -6,9 +7,13 @@ import { Course } from './course/entities/course.entity';
 import { Subscription } from './subscription/entity/subscription.entity';
 import { SubscriptionModule } from './subscription/subscription.module';
 import { UserModule } from './user/user.module';
+import { CloudinaryModule } from './cloudinary/cloudinary.module';
+import { CloudinaryService } from './cloudinary/cloudinary.service';
+import { CloudinaryController } from './cloudinary/cloudinary.controller';
 
 @Module({
   imports: [
+    CloudinaryModule,
     SubscriptionModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
@@ -23,7 +28,8 @@ import { UserModule } from './user/user.module';
     UserModule,
     CourseModule,
   ],
-  controllers: [],
-  providers: [],
+  controllers: [CloudinaryController],
+  providers: [CloudinaryService],
+
 })
 export class AppModule {}
