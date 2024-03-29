@@ -1,11 +1,11 @@
-import { SubscriptionModule } from './subscription/subscription.module';
-import { SubscriptionController } from './subscription/subscription.controller';
-import { UserModule } from './user/user.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { Module } from '@nestjs/common';
 import { User } from './user/entity/user.entity';
+import { CourseModule } from './course/course.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { Course } from './course/entities/course.entity';
 import { Subscription } from './subscription/entity/subscription.entity';
+import { SubscriptionModule } from './subscription/subscription.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -21,6 +21,7 @@ import { Subscription } from './subscription/entity/subscription.entity';
       synchronize: true,
     }),
     UserModule,
+    CourseModule,
   ],
   controllers: [],
   providers: [],
